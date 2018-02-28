@@ -71,7 +71,7 @@
 				"viewType": "XML",
 				"viewPath": "produtos2.view",
 				"controlId": "app",
-				"controlAgreegation": "pages",
+				"controlAggregation": "pages",
 				"transition": "slide",
 				"async": true
 			},

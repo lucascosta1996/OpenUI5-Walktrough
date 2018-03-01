@@ -1,0 +1,20 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="produto2.controller.ListProdutos">
+	<App>
+		<pages>
+			<Page title="Title" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<!--<List>
+						<items>
+							<StandardListItem >
+								
+							</StandardListItem>
+						</items>
+					</List>-->
+					<SelectList items="{path: '/Produtos'}">
+						<core:Item key="{Nome}" text="{Descricao}"/>
+					</SelectList>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

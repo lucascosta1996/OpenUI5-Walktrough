@@ -1,0 +1,18 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="produto2.controller.Login">
+	<App>
+		<pages>
+			<Page title="{i18n>loginTitle}">
+			<content>
+			    <VBox width="100%" direction="Column" id="__vbox0" fitContainer="true" alignItems="Center" alignContent="Center" justifyContent="Center">
+			        <items>
+			            <Image width="140px" height="140px" id="__image0" src="images/sap-logo.png" tooltip="Logo da empresa SAP"/>
+			            <Input xmlns="sap.m" width="100%" id="user" placeholder="User" value="{/Login/Usuario}" tooltip="Nome de usuário"/>
+			            <Input xmlns="sap.m" width="100%" id="passw" placeholder="Password" value="{/Login/Senha}" type="Password"/>
+			            <Button xmlns="sap.m" text="Submit" width="100px" id="btnlogin" press="logon"/>
+			        </items>
+			    </VBox>
+			</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

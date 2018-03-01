@@ -1,4 +1,8 @@
-sap.ui.define(["sap/ui/core/mvc/Controller"], function(Controller) {
+sap.ui.define([
+	"sap/ui/core/mvc/Controller",
+	"sap/m/MessageToast"
+	      ], 
+function(Controller) {
 	"use strict";
 	return Controller.extend("produto2.controller.Login", {
 		 onInit: function(){

@@ -1,1 +1,1 @@
-# OpenUI5-Walktrough
+OpenUI5 course

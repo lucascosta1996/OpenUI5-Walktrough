@@ -1,0 +1,82 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+    <edmx:DataServices
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0" m:MaxDataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2009/11/edm" Namespace="getdadosModel">
+            <EntityType Name="Produto">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Nome" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false"/>
+                <Property Name="Descricao" Type="Edm.String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false"/>
+                <Property Name="Preco" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2"/>
+                <Property Name="Imagem" Type="Edm.String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false"/>
+                <NavigationProperty Name="Vendas" Relationship="getdadosModel.FK__Vendas__IdProdut__276EDEB3" ToRole="Vendas" FromRole="Produto"/>
+            </EntityType>
+            <EntityType Name="Usuario">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Usuario1" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false"/>
+                <Property Name="Senha" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false"/>
+                <NavigationProperty Name="Vendas" Relationship="getdadosModel.FK__Vendas__IduUsuar__286302EC" ToRole="Vendas" FromRole="Usuario"/>
+            </EntityType>
+            <EntityType Name="Venda">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="IdProduto" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="IduUsuario" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Quantidade" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Total" Type="Edm.Decimal" Precision="10" Scale="2"/>
+                <NavigationProperty Name="Produto" Relationship="getdadosModel.FK__Vendas__IdProdut__276EDEB3" ToRole="Produto" FromRole="Vendas"/>
+                <NavigationProperty Name="Usuario" Relationship="getdadosModel.FK__Vendas__IduUsuar__286302EC" ToRole="Usuario" FromRole="Vendas"/>
+            </EntityType>
+            <Association Name="FK__Vendas__IdProdut__276EDEB3">
+                <End Type="getdadosModel.Produto" Role="Produto" Multiplicity="1"/>
+                <End Type="getdadosModel.Venda" Role="Vendas" Multiplicity="*"/>
+                <ReferentialConstraint>
+                    <Principal Role="Produto">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="Vendas">
+                        <PropertyRef Name="IdProduto"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="FK__Vendas__IduUsuar__286302EC">
+                <End Type="getdadosModel.Usuario" Role="Usuario" Multiplicity="1"/>
+                <End Type="getdadosModel.Venda" Role="Vendas" Multiplicity="*"/>
+                <ReferentialConstraint>
+                    <Principal Role="Usuario">
+                        <PropertyRef Name="Id"/>
+                    </Principal>
+                    <Dependent Role="Vendas">
+                        <PropertyRef Name="IduUsuario"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+        </Schema>
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2009/11/edm" Namespace="DataAccess">
+            <EntityContainer
+                xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Name="getdadosEntities" m:IsDefaultEntityContainer="true" p6:LazyLoadingEnabled="true">
+                <EntitySet Name="Produtos" EntityType="getdadosModel.Produto"/>
+                <EntitySet Name="Usuarios" EntityType="getdadosModel.Usuario"/>
+                <EntitySet Name="Vendas" EntityType="getdadosModel.Venda"/>
+                <AssociationSet Name="FK__Vendas__IdProdut__276EDEB3" Association="getdadosModel.FK__Vendas__IdProdut__276EDEB3">
+                    <End Role="Produto" EntitySet="Produtos"/>
+                    <End Role="Vendas" EntitySet="Vendas"/>
+                </AssociationSet>
+                <AssociationSet Name="FK__Vendas__IduUsuar__286302EC" Association="getdadosModel.FK__Vendas__IduUsuar__286302EC">
+                    <End Role="Usuario" EntitySet="Usuarios"/>
+                    <End Role="Vendas" EntitySet="Vendas"/>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
